@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 120);
             $table->longText('summary');
             $table->boolean('locked');
             $table->unsignedBigInteger('created_by');
@@ -23,8 +23,8 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('updated_by')->references('id')->on('users');
+//            $table->foreign('created_by')->references('id')->on('users');
+//            $table->foreign('updated_by')->references('id')->on('users');
         });
     }
 

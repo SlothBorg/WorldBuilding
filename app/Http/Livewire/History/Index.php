@@ -10,6 +10,9 @@ class Index extends Component
 {
     use WithPagination;
 
+//    protected array $listeners = ['refresh'];
+    protected $listeners = ['refreshIndex' => '$refresh'];
+
     public function render()
     {
         return view('livewire.history.index', [
