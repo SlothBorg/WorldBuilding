@@ -4,7 +4,10 @@
     @if($histories->isEmpty())
         <p>No history has been created yet.</p>
 
-        <x-livewire-action-button action="test" text="Create the first History!" color="{{ true }}"/>
+        <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" wire:click="">
+            Create the first History!
+        </button>
+
     @else
         @foreach ($histories as $history)
             {{ $history->name }}
