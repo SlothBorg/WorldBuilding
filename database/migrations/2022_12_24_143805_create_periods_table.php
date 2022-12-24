@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('periods', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 120);
+            $table->string('name', 255);
             $table->boolean('dark');
             $table->boolean('bloody');
             $table->unsignedInteger('position')->default(1);

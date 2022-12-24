@@ -135,6 +135,13 @@ class HistoryTest extends TestCase
         $history = History::factory()->create();
 
         $this->get(route('history.show', $history))
+            ->assertSeeLivewire('history.show')
+            ->assertSeeText('Add Period')
+            ->assertSeeText('Foci')
+            ->assertSeeText('Pallet')
+            ->assertSeeText('Legacies')
+            ->assertSeeText('Characters')
+            ->assertSeeText('Players')
             ->assertOk();
     }
 }

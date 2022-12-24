@@ -1,7 +1,7 @@
 <div>
-    <section class="w-full">
+    <section class="pb-2 border-b-2 border-accent-red">
         <div class="flex justify-center max-w-full prose">
-            <h2>{{ $history->name }}</h2>
+            <h1>{{ $history->name }}</h1>
         </div>
         <div class="flex flex-row space-x-4 px-8">
             <x-open-modal-button

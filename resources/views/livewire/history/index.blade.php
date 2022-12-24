@@ -1,27 +1,32 @@
-<div>
-    <h1>Histories</h1>
+<div class="flex justify-center prose">
+    <section>
+        <h1>Histories</h1>
+    </section>
 
     @if($histories->isEmpty())
-        <p>No history has been created yet.</p>
+        <section>
+            <p>No history has been created yet.</p>
 
-        <button
-            class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
-            onclick="Livewire.emit('openModal', 'history.create')"
-        >
-            Create the first History!
-        </button>
+            <button
+                    class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+                    onclick="Livewire.emit('openModal', 'history.create')"
+            >
+                Create the first History!
+            </button>
+        </section>
 
     @else
-        <table>
-            <thead>
+        <section>
+            <table>
+                <thead>
                 <tr>
                     <th>Name</th>
                     <th>Summary</th>
                     <th>Private</th>
                     <th colspan="2"></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 @foreach ($histories as $history)
                     <tr>
                         <td>
@@ -32,7 +37,7 @@
                         <td>{{ $history->shortSummary() }}</td>
                         <td>{{ $history->displayStatus() }}</td>
                         <td>
-{{--                            <button onclick="Livewire.emit('openModal', 'history.edit', {{ json_encode(["history" => $history]) }})" >--}}
+                            {{--                            <button onclick="Livewire.emit('openModal', 'history.edit', {{ json_encode(["history" => $history]) }})" >--}}
                             <button onclick='Livewire.emit("openModal", "history.edit", {{ json_encode(["history" => $history->id]) }})' >
                                 <i class='bx bx-pencil' ></i>
                             </button>
@@ -45,17 +50,18 @@
                     </tr>
 
                 @endforeach
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-        {{ $histories->links() }}
+            {{ $histories->links() }}
 
-        <button
-                class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
-                onclick="Livewire.emit('openModal', 'history.create')"
-        >
-            Create a History!
-        </button>
+            <button
+                    class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
+                    onclick="Livewire.emit('openModal', 'history.create')"
+            >
+                Create a History!
+            </button>
+        </section>
     @endif
 
 </div>
