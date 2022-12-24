@@ -3,9 +3,9 @@
 namespace App\Http\Livewire\History;
 
 use App\Models\History;
-use Livewire\Component;
+use LivewireUI\Modal\ModalComponent;
 
-class Edit extends Component
+class Edit extends ModalComponent
 {
 
     public History $history;

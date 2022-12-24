@@ -13,7 +13,7 @@ class Index extends Component
 //    protected array $listeners = ['refresh'];
     protected $listeners = [
         'refreshIndex' => '$refresh',
-//        'deleteHistory',
+        'deleteObject' => 'delete',
     ];
 
     public function render()
@@ -28,9 +28,23 @@ class Index extends Component
 
     }
 
+    public function openConfirmation(History $history)
+    {
+        $this->emit(
+            'openModal',
+            'component.confirmation-modal',
+            [
+                'object' => $history,
+                'objectName' => $history->name,
+                'objectType' => 'History',
+                'eventName' => Index::getName(),
+            ]
+        );
+    }
+
     public function delete(History $history)
     {
-//        open confimation modal
-//        delete or abort
+        $history->delete();
+        $this->emit('refreshIndex');
     }
 }

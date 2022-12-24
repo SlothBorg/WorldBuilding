@@ -33,7 +33,7 @@
                             </button>
                         </td>
                         <td>
-                            <button wire:click="delete({{ $history->id }})">
+                            <button wire:click="openConfirmation({{ $history->id }})">
                                 <i class='bx bx-trash'></i>
                             </button>
                         </td>
