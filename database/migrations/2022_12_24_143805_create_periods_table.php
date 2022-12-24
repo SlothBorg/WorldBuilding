@@ -15,7 +15,18 @@ return new class extends Migration
     {
         Schema::create('periods', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 120);
+            $table->boolean('dark');
+            $table->boolean('bloody');
+            $table->unsignedInteger('position')->default(1);
+            $table->unsignedBigInteger('history_id');
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('history_id')->references('id')->on('histories')
+                ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -8,28 +8,28 @@ class OpenModalButton extends Component
 {
     public string $modalName = '';
     public string $text = '';
+    public string $variableName = '';
+    public $variable;
+    public bool $hasData = false;
     public string $cssClass = 'font-bold hover:text-accent-red hover:underline hover:decoration-2';
 
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct(string $modalName, string $text, string $cssClass='')
+    public function __construct(string $modalName, string $text, string $dataName='', $data=null, string $cssClass='')
     {
         $this->modalName = $modalName;
         $this->text = $text;
+        $this->variableName = $dataName;
+        $this->variable = $data;
+
+        if (isset($this->variableName) && isset($this->variable)) {
+            $this->hasData = true;
+        }
+
         if (!empty($cssClass))
         {
             $this->cssClass = $cssClass;
         }
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
     public function render()
     {
         return view('components.open-modal-button');
