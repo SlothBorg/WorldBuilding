@@ -4,16 +4,12 @@
     @include('layouts.parts.header')
     @livewireStyles
 </head>
-<body class="font-sans antialiased m-0 p-0 h-full">
-<div class="flex justify-center items-center h-full">
-    <main>
-        <section class="prose">
-            @yield('content')
-        </section>
+<body class="font-sans antialiased m-0 p-0 h-full bg-light text-dark">
+    <main class="w-full">
+        @yield('content')
     </main>
-</div>
 
-@livewireScripts
-@livewire('livewire-ui-modal')
+    @livewireScripts
+    @livewire('livewire-ui-modal')
 </body>
 </html>

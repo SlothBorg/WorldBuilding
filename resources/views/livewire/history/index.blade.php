@@ -24,7 +24,11 @@
             <tbody>
                 @foreach ($histories as $history)
                     <tr>
-                        <td class="cursor-pointer underline text-accent-purple" wire:click="">{{ $history->name }}</td>
+                        <td>
+                            <a href="{{ route('history.show', $history) }}" class="cursor-pointer underline text-accent-purple" alt="View {{ $history->name }}">
+                                {{ $history->name }}
+                            </a>
+                        </td>
                         <td>{{ $history->shortSummary() }}</td>
                         <td>{{ $history->displayStatus() }}</td>
                         <td>

@@ -1,7 +1,8 @@
 @extends('layouts.history')
 
-@section('title', 'Page Title')
+@section('title', 'History - ' . $history->name)
 
 @section('content')
-    <livewire:history.show />
+{{--    <livewire:history.show :history="{{ $history }}"/>--}}
+    @livewire('history.show', ['history' => $history])
 @endsection

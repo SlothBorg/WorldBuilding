@@ -5,27 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreHistoriesRequest;
 use App\Http\Requests\UpdateHistoriesRequest;
 use App\Models\Histories;
+use App\Models\History;
 use Illuminate\View\View;
 
 class HistoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
     public function index()
     {
         return view('pages.history.index');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function show()
+    public function show(History $history)
     {
-        return view('pages.history.show');
+        return view('pages.history.show', ['history' => $history]);
     }
 }

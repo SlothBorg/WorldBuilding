@@ -1,6 +1,6 @@
 @extends('layouts.history')
 
-@section('title', 'Page Title')
+@section('title', 'Histories')
 
 @section('content')
     <livewire:history.index />

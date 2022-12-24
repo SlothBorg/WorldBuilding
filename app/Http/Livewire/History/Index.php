@@ -10,7 +10,6 @@ class Index extends Component
 {
     use WithPagination;
 
-//    protected array $listeners = ['refresh'];
     protected $listeners = [
         'refreshIndex' => '$refresh',
         'deleteObject' => 'delete',
@@ -21,11 +20,6 @@ class Index extends Component
         return view('livewire.history.index', [
             'histories' => History::paginate(25),
         ]);
-    }
-
-    public function edit(History $history)
-    {
-
     }
 
     public function openConfirmation(History $history)
