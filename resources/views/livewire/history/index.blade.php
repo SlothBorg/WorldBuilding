@@ -24,18 +24,18 @@
             <tbody>
                 @foreach ($histories as $history)
                     <tr>
-                        <td>{{ $history->name }}</td>
-                        <td>{{ substr($history->summary, 0, 75) }}</td>
-                        <td>{{ $history->locked ? 'Private' : 'Public' }}</td>
+                        <td class="cursor-pointer underline text-accent-purple" wire:click="">{{ $history->name }}</td>
+                        <td>{{ $history->shortSummary() }}</td>
+                        <td>{{ $history->displayStatus() }}</td>
                         <td>
-                            <svg class="humbleicons bg-dark">
-                                <use xlink:href="humbleicons.svg#pencil"/>
-                            </svg>
+                            <button wire:click="edit({{ $history->id }})">
+                                <i class='bx bx-pencil' ></i>
+                            </button>
                         </td>
                         <td>
-                            <svg class="humbleicons bg-dark">
-                                <use xlink:href="humbleicons.svg#trash"/>
-                            </svg>
+                            <button wire:click="delete({{ $history->id }})">
+                                <i class='bx bx-trash'></i>
+                            </button>
                         </td>
                     </tr>
 

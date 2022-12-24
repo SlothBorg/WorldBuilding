@@ -10,4 +10,14 @@ class History extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function shortSummary() : string
+    {
+        return substr($this->summary, 0, 75);
+    }
+
+    public function displayStatus() : string
+    {
+        return $this->locked ? 'Private' : 'Public';
+    }
 }
