@@ -10,4 +10,14 @@ class Period extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $casts = [
+        'dark' => 'boolean',
+        'bloody' => 'boolean',
+    ];
+
+    public function history()
+    {
+        return $this->hasOne(History::class);
+    }
 }

@@ -19,4 +19,15 @@
             <x-open-modal-button modalName="players.create" text="Players" />
         </div>
     </section>
+
+    <section class="flex flex-row px-4">
+        @foreach($history->periods()->get() as $period)
+            <div class="px-2 pt-2">
+                <x-card :object="$period" />
+            </div>
+
+
+
+        @endforeach
+    </section>
 </div>

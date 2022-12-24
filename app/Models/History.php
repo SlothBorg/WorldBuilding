@@ -11,6 +11,16 @@ class History extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'locked' => 'boolean',
+    ];
+
+    public function periods()
+    {
+        return $this->hasMany(Period::class)
+            ->orderBy('position', 'desc');
+    }
+
     public function shortSummary() : string
     {
         return substr($this->summary, 0, 75);
