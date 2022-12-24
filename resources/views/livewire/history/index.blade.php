@@ -17,6 +17,8 @@
 
     @else
         <section>
+            {{ $histories->links('components.pagination') }}
+
             <table>
                 <thead>
                 <tr>
@@ -53,7 +55,7 @@
                 </tbody>
             </table>
 
-            {{ $histories->links() }}
+            {{ $histories->links('components.pagination') }}
 
             <button
                     class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"

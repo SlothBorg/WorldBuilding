@@ -1,4 +1,5 @@
 @if ($paginator->hasPages())
+    <p>This is just a test</p>
     <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex items-center justify-between">
         <div class="flex justify-between flex-1 sm:hidden">
             @if ($paginator->onFirstPage())
@@ -27,14 +28,14 @@
                 <p class="text-sm text-gray-700 leading-5">
                     {!! __('Showing') !!}
                     @if ($paginator->firstItem())
-                        <span class="font-medium">{{ $paginator->firstItem() }}</span>
+                        <span class="font-medium text-accent-red">{{ $paginator->firstItem() }}</span>
                         {!! __('to') !!}
-                        <span class="font-medium">{{ $paginator->lastItem() }}</span>
+                        <span class="font-medium text-accent-red">{{ $paginator->lastItem() }}</span>
                     @else
                         {{ $paginator->count() }}
                     @endif
                     {!! __('of') !!}
-                    <span class="font-medium">{{ $paginator->total() }}</span>
+                    <span class="font-medium text-accent-red">{{ $paginator->total() }}</span>
                     {!! __('results') !!}
                 </p>
             </div>
