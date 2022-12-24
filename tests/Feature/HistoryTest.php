@@ -129,12 +129,12 @@ class HistoryTest extends TestCase
             ->call('submit');
     }
 
-//    /** @test */
-//    public function can_view_a_history()
-//    {
-//        $history = History::factory()->create();
-//
-//        $this->get('')
-//            ->assertOk();
-//    }
+    /** @test */
+    public function can_view_a_history()
+    {
+        $history = History::factory()->create();
+
+        $this->get(route('history.show', $history))
+            ->assertOk();
+    }
 }

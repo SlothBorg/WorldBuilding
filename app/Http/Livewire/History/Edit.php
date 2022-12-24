@@ -7,17 +7,11 @@ use LivewireUI\Modal\ModalComponent;
 
 class Edit extends ModalComponent
 {
-
-    public History $history;
+    // can't be a history because of laravel magic bleh
+    public $history;
     public string $name = '';
     public string $summary = '';
     public bool $locked;
-
-    protected $rules = [
-        'name' => 'required|string|min:4|max:120|unique:histories',
-        'summary' => 'required|string|min:12',
-        'locked' => 'required|boolean',
-    ];
 
     public static function modalMaxWidth(): string
     {
@@ -35,6 +29,15 @@ class Edit extends ModalComponent
     public function render()
     {
         return view('livewire.history.edit');
+    }
+
+    protected function rules() : array
+    {
+        return [
+            'name' => 'required|string|min:4|max:120|unique:histories,name,' . $this->history->id,
+            'summary' => 'required|string|min:12',
+            'locked' => 'required|boolean',
+        ];
     }
 
     public function submit()

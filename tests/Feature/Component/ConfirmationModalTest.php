@@ -11,7 +11,7 @@ use Tests\TestCase;
 class ConfirmationModalTest extends TestCase
 {
     use RefreshDatabase;
-    
+
     /** @test */
     public function ensure_it_renders()
     {

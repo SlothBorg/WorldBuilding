@@ -30,5 +30,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+Route::get('/history/{history}', [HistoryController::class, 'show'])->name('history.show');
 
 require __DIR__.'/auth.php';

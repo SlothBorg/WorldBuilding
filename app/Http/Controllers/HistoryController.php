@@ -16,6 +16,16 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        return view('history');
+        return view('pages.history.index');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function show()
+    {
+        return view('pages.history.show');
     }
 }

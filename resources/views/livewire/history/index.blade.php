@@ -28,7 +28,8 @@
                         <td>{{ $history->shortSummary() }}</td>
                         <td>{{ $history->displayStatus() }}</td>
                         <td>
-                            <button wire:click="edit({{ $history->id }})">
+{{--                            <button onclick="Livewire.emit('openModal', 'history.edit', {{ json_encode(["history" => $history]) }})" >--}}
+                            <button onclick='Livewire.emit("openModal", "history.edit", {{ json_encode(["history" => $history->id]) }})' >
                                 <i class='bx bx-pencil' ></i>
                             </button>
                         </td>
