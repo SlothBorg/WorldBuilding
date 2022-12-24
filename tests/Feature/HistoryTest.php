@@ -88,7 +88,8 @@ class HistoryTest extends TestCase
             ->set('name', $name)
             ->set('summary', $summary)
             ->set('locked', $locked)
-            ->call('submit');
+            ->call('submit')
+            ->assertEmitted('refreshIndex');
 
         $this->assertDatabaseCount('histories', 1);
         $this->assertDatabaseHas('histories', [
@@ -104,6 +105,24 @@ class HistoryTest extends TestCase
         $history = History::factory()->create();
 
         Livewire::test(Edit::class, ['history' => $history])
+            ->assertSee($history->name)
+            ->assertSee($history->summary)
+            ->assertSee('Update ' . $history->name . '!')
+            ->assertSet('name', $history->name)
+            ->assertSet('summary', $history->summary)
+            ->assertSet('locked', $history->locked)
+            ->call('submit');
+    }
+
+    /** @test */
+    public function can_delete_a_history()
+    {
+        $history = History::factory()->create();
+
+        Livewire::test(Edit::class, ['history' => $history])
+            ->assertSee($history->name)
+            ->assertSee($history->summary)
+            ->assertSee('Update ' . $history->name . '!')
             ->assertSet('name', $history->name)
             ->assertSet('summary', $history->summary)
             ->assertSet('locked', $history->locked)
