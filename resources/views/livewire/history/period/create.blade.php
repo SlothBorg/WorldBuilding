@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div>
-                <button type="submit" >Create History!</button>
+                <button type="submit" >Create Period!</button>
             </div>
         </form>
     </section>

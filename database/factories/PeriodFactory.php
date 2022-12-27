@@ -4,6 +4,7 @@
 namespace Database\Factories;
 
 use App\Models\History;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PeriodFactory extends Factory
@@ -12,11 +13,19 @@ class PeriodFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'summary' => fake()->text(),
-            'locked' => fake()->boolean(),
+            'dark' => fake()->boolean(),
+            'bloody' => fake()->boolean(),
+            'history_id' => History::factory()->create()->id,
             'created_by' => User::factory()->create()->id,
             'updated_by' => null,
         ];
+    }
+
+    public function onHistory(History $history)
+    {
+        return $this->state(fn (array $attributes) => [
+            'history_id' => $history->id,
+        ]);
     }
 
     public function updated()
