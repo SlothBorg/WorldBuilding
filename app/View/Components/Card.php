@@ -10,7 +10,7 @@ class Card extends Component
     public Period $object;
     public bool $dark = false;
     public bool $bloody = false;
-    public string $border = '';
+    public string $border = 'border-dark';
 //    public string $orientation;
 
     public function __construct(Period $object)
@@ -21,8 +21,6 @@ class Card extends Component
 
         if ($this->bloody) {
             $this->border = 'border-accent-red';
-        } elseif (!$this->dark) {
-            $this->border = 'border-dark';
         }
     }
 
