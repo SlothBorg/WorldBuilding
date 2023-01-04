@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\History\Event;
 
 use App\Models\Period;
+use App\Models\Event;
 use LivewireUI\Modal\ModalComponent;
 
 class Create extends ModalComponent
@@ -27,8 +28,25 @@ class Create extends ModalComponent
     {
         $this->period = $period;
     }
+
     public function render()
     {
         return view('livewire.history.event.create');
+    }
+
+    public function submit()
+    {
+        $this->validate();
+
+        Event::create([
+            'name' => $this->name,
+            'summary' => $this->summary,
+            'dark' => $this->dark,
+            'period_id' => $this->period->id,
+            'created_by' => auth()->user()->id ?? 1,
+        ]);
+
+        $this->closeModal();
+        $this->emit('refreshIndex');
     }
 }

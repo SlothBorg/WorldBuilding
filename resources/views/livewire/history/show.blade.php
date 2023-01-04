@@ -21,9 +21,12 @@
     </section>
 
     <section class="flex flex-row px-4">
-        @foreach($history->periods()->get() as $period)
+        @foreach($history->periods as $period)
             <div class="px-2 pt-2">
                 <x-card :object="$period" />
+                @foreach($period->events as $event)
+                    <x-card :object="$event" />
+                @endforeach
             </div>
 
 

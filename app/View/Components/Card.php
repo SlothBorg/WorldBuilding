@@ -2,18 +2,19 @@
 
 namespace App\View\Components;
 
+use App\Models\Event;
 use App\Models\Period;
 use Illuminate\View\Component;
 
 class Card extends Component
 {
-    public Period $object;
+    public Period|Event $object;
     public bool $dark = false;
     public bool $bloody = false;
     public string $border = 'border-dark';
 //    public string $orientation;
 
-    public function __construct(Period $object)
+    public function __construct(Period|Event $object)
     {
         $this->object = $object;
         $this->dark = $object->dark;

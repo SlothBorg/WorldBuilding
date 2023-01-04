@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Period extends Model
+class Event extends Model
 {
     use HasFactory;
 
@@ -13,17 +13,15 @@ class Period extends Model
 
     protected $casts = [
         'dark' => 'boolean',
-        'bloody' => 'boolean',
     ];
 
-    public function history()
+    public function period()
     {
-        return $this->hasOne(History::class);
+        return $this->hasOne(Period::class);
     }
 
-    public function events()
+    public function shortSummary() : string
     {
-        return $this->hasMany(Event::class)
-            ->orderBy('position', 'desc');
+        return substr($this->summary, 0, 75);
     }
 }

@@ -5,7 +5,7 @@
         </h2>
         <p class="text-center {{ $dark ? 'text-light' : 'text-dark' }}">
             <x-open-modal-button
-                modalName="event.create"
+                modalName="history.event.create"
                 text="Add Event"
                 dataName="period"
                 :data="$object->id"

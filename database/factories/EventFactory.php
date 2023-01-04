@@ -1,31 +1,33 @@
 <?php
 
-
 namespace Database\Factories;
 
-use App\Models\History;
+use App\Models\Period;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PeriodFactory extends Factory
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
+ */
+class EventFactory extends Factory
 {
     public function definition()
     {
         return [
-            'name' => 'Period - ' . fake()->name(),
+            'name' => 'Event - ' . fake()->name(),
+            'summary' => fake()->text(),
             'dark' => fake()->boolean(),
-            'bloody' => fake()->boolean(),
-            'history_id' => History::factory()->create()->id,
+            'period_id' => Period::factory()->create()->id,
             'position' => fake()->numberBetween(0, 150),
             'created_by' => User::factory()->create()->id,
             'updated_by' => null,
         ];
     }
 
-    public function onHistory(History $history)
+    public function onPeriod(Period $period)
     {
         return $this->state(fn (array $attributes) => [
-            'history_id' => $history->id,
+            'period_id' => $period->id,
         ]);
     }
 
