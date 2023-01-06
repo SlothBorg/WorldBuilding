@@ -1,4 +1,4 @@
-<div class="{{ $dark ? 'bg-dark' : 'bg-light' }} max-w-sm rounded overflow-hidden shadow-lg border-2 {{ $border }}">
+<div class="{{ $dark ? 'bg-dark' : 'bg-light' }} max-w-sm m-2 rounded overflow-hidden shadow-lg border-2 {{ $border }}">
     <div class="px-6 py-4 prose">
         <h2 class="text-center {{ $dark ? 'text-light' : 'text-dark' }}">
             {{ $object->name }}

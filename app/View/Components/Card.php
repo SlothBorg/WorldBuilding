@@ -9,14 +9,15 @@ use Illuminate\View\Component;
 class Card extends Component
 {
     public Period|Event $object;
+    public bool $horizontal = false;
     public bool $dark = false;
     public bool $bloody = false;
     public string $border = 'border-dark';
-//    public string $orientation;
 
-    public function __construct(Period|Event $object)
+    public function __construct(Period|Event $object, bool $horizontal=true)
     {
         $this->object = $object;
+        $this->horizontal = $horizontal;
         $this->dark = $object->dark;
         $this->bloody = ($object instanceof Period) ? $object->bloody : false;
 
