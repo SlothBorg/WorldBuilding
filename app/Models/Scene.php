@@ -12,4 +12,9 @@ class Scene extends Model
     protected $casts = [
         'dark' => 'boolean',
     ];
+
+    public function event()
+    {
+        return $this->hasOne(Event::class);
+    }
 }
