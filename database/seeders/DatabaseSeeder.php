@@ -21,20 +21,30 @@ class DatabaseSeeder extends Seeder
         History::factory(10)->create();
 
         $this->command->info('Creating Periods');
-        History::all()->each(function($history) {
+
+        $histories = History::all();
+        $historyBar = $this->command->getOutput()->createProgressBar(count($histories) * 5);
+        $histories->each(function($history) use ($historyBar) {
             Period::factory()
                 ->count(random_int(1, 5))
                 ->onHistory($history)
                 ->create();
+            $historyBar->advance();
         });
-
+        $historyBar->finish();
+        $this->command->info("\n");
 
         $this->command->info('Creating Events');
-        Period::all()->each(function($period) {
+        $periods = Period::all();
+        $periodBar = $this->command->getOutput()->createProgressBar(count($periods) * 5);
+        $periods->each(function($period) use ($periodBar) {
             Event::factory()
                 ->count(random_int(0, 3))
                 ->onPeriod($period)
                 ->create();
+            $periodBar->advance();
         });
+        $periodBar->finish();
+        $this->command->info("\n");
     }
 }
